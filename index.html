@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <!-- 헤더: 앱 제목 + 다크 모드 토글 -->
+    <header class="app-header">
+      <button id="themeToggleBtn" class="theme-toggle" aria-label="다크 모드 전환">☾</button>
+      <h1 class="app-title">Todo</h1>
+      <p class="app-subtitle">오늘 할 일을 정리해보세요</p>
+    </header>
+
+    <!-- 주간 뷰: 월~일 가로 배치 + 주간 이동 버튼 -->
+    <section class="week-view" aria-label="주간 보기">
+      <div class="week-nav">
+        <button id="prevWeekBtn" class="icon-btn" aria-label="이전 주">‹</button>
+        <span id="weekLabel" class="week-label">2026년 6월 1일 ~ 6월 7일</span>
+        <button id="nextWeekBtn" class="icon-btn" aria-label="다음 주">›</button>
+      </div>
+      <ul id="weekDays" class="week-days"></ul>
+    </section>
+
+    <!-- 일간 뷰: 선택된 날짜 표시 + 이전/다음 -->
+    <section class="day-view">
+      <button id="prevDayBtn" class="icon-btn" aria-label="이전 날짜">‹</button>
+      <div class="day-label-wrap">
+        <span id="dayLabel" class="day-label">2026년 6월 2일 (화)</span>
+        <button id="todayBtn" class="today-btn">오늘</button>
+      </div>
+      <button id="nextDayBtn" class="icon-btn" aria-label="다음 날짜">›</button>
+    </section>
+
+    <!-- 입력 영역: 새 Todo 추가 -->
+    <form id="todoForm" class="todo-form">
+      <input
+        type="text"
+        id="todoInput"
+        class="todo-input"
+        placeholder="할 일을 입력하세요"
+        autocomplete="off"
+      />
+      <button type="submit" class="add-btn">추가</button>
+    </form>
+    <p id="formMessage" class="form-message" role="alert"></p>
+
+    <!-- 진행률: 선택된 날짜의 완료 비율 -->
+    <section id="progressSection" class="progress" aria-label="진행률">
+      <p id="progressText" class="progress-text"></p>
+      <div class="progress-bar">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+    </section>
+
+    <!-- 필터 탭: 전체 / 진행 중 / 완료 -->
+    <nav class="filter-tabs" role="tablist">
+      <button class="filter-tab active" data-filter="all" role="tab">전체</button>
+      <button class="filter-tab" data-filter="active" role="tab">진행 중</button>
+      <button class="filter-tab" data-filter="done" role="tab">완료</button>
+    </nav>
+
+    <!-- Todo 목록 -->
+    <ul id="todoList" class="todo-list"></ul>
+
+    <!-- 빈 상태 안내 -->
+    <p id="emptyState" class="empty-state">아직 등록된 할 일이 없어요.</p>
+
+    <!-- 키보드 단축키 안내 -->
+    <p class="shortcuts-hint">
+      <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>K</kbd> 할 일 입력
+      · <kbd>Esc</kbd> 수정 취소
+    </p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
